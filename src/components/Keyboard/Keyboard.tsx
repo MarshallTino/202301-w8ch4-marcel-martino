@@ -1,6 +1,7 @@
 import EqualButton from "../EqualButton/EqualButton";
 import Key from "../Button/Button";
 import "./keyBoardStyled.css";
+import ClearButton from "../Clearbutton/Clearbutton";
 const Keyboard = (): JSX.Element => {
   return (
     <ul className="calculator__keyboard">
@@ -19,6 +20,7 @@ const Keyboard = (): JSX.Element => {
       <Key keyValue={"+"} />
       <Key keyValue={"-"} />
       <EqualButton />
+      <ClearButton />
     </ul>
   );
 };

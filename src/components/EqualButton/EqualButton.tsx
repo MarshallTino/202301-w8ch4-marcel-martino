@@ -30,7 +30,6 @@ const EqualButton = (): JSX.Element => {
   }
 
   const equalButtonAction = () => {
-    // eslint-disable-next-line no-eval
     dispatch(updateDisplayActionCreator(resolve(operation)));
     dispatch(clearDisplayActionCreator);
   };
