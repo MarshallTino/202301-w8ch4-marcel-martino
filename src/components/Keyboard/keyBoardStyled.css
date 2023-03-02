@@ -1,0 +1,7 @@
+.calculator__keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  width: 229px;
+  border: 2px solid black;
+  height: 100%;
+}
