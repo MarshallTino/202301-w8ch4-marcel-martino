@@ -1,22 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface calculatorState {
-  result: number;
-  display: number;
+  display: number | string;
   operation: string;
 }
 
-const initialState: calculatorState = { display: 0, operation: "", result: 0 };
+const initialState: calculatorState = { display: 0, operation: "" };
 
 const calculatorSlice = createSlice({
   initialState,
   name: "calculator",
   reducers: {
-    clearDisplay: (currentCalculatorState: calculatorState) => {
+    clearDisplayAndOperation: (currentCalculatorState: calculatorState) => {
       const newState = {
-        result: 0,
         display: 0,
-        operation: currentCalculatorState.operation,
+        operation: "",
       };
       return newState;
     },
@@ -25,7 +23,6 @@ const calculatorSlice = createSlice({
       action: PayloadAction<number | string>
     ) => {
       const newState = {
-        result: currentCalculatorState.result,
         display: currentCalculatorState.display,
         operation: currentCalculatorState.operation + action.payload,
       };
@@ -33,12 +30,11 @@ const calculatorSlice = createSlice({
     },
     updateDisplay: (
       currentCalculatorState: calculatorState,
-      action: PayloadAction<number>
+      action: PayloadAction<number | string>
     ) => {
       const newState = {
-        result: currentCalculatorState.result,
-        display: currentCalculatorState.display,
-        operation: currentCalculatorState.operation + action.payload,
+        display: action.payload,
+        operation: currentCalculatorState.operation,
       };
       return newState;
     },
@@ -46,4 +42,8 @@ const calculatorSlice = createSlice({
 });
 
 export const calculatorReducer = calculatorSlice.reducer;
-export const { addToOperation, clearDisplay } = calculatorSlice.actions;
+export const {
+  addToOperation: addToOperationActionCreator,
+  clearDisplayAndOperation: clearDisplayActionCreator,
+  updateDisplay: updateDisplayActionCreator,
+} = calculatorSlice.actions;
